@@ -1,0 +1,44 @@
+/*CATEGORIA*/
+INSERT INTO categoria(descripcion) VALUES ('Palabra');
+INSERT INTO categoria(descripcion) VALUES ('Frase');
+
+/*TIPO*/
+INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPSUST',1,'SUSTANTIVO');
+INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPVERB',1,'VERBO');
+INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPADJ',1,'ADJETIVO');
+INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPPRON',1,'PRONOMBRE');
+INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPADV',1,'ADVERBIO');
+INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPSAL',2,'SALUDO');
+
+/*PALABRA_FRASE*/
+INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (1,'dog','easy');
+INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (1,'house','easy');
+INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (1,'tree','hard');
+INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (1,'book','hard');
+INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (2,'Hello, how are you?','hard');
+INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (2,'Good morning!','easy');
+
+/*SIGNIFICADO*/
+INSERT INTO significado (id_palabra_frase,descripcion) VALUES (1,'A carnivorous mammal of the family Felidae, usually domesticated as a pet');
+INSERT INTO significado (id_palabra_frase,descripcion) VALUES (1,'Member of the Felidae family, including wild felines.');
+INSERT INTO significado (id_palabra_frase,descripcion) VALUES (2,'A domesticated carnivorous mammal of the Canidae family');
+INSERT INTO significado (id_palabra_frase,descripcion) VALUES (3,'A building for living, usually with several rooms and intended to be a permanent residence.');
+INSERT INTO significado (id_palabra_frase,descripcion) VALUES (4,'A perennial plant with a woody stem that branches out at a certain height from the ground, with branches and leaves at the top.');
+INSERT INTO significado (id_palabra_frase,descripcion) VALUES (5,'A set of written or printed pages bound together in a volume, forming a literary, scientific, or other type of work.');
+
+/*ORACION*/
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (1,'I have a black cat named Whiskers');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (2,'My dog loves to play fetch in the park');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (3,'They recently bought a new house in the suburbs');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (4,'The tree in our backyard provides nice shade in the summer.');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (5,'I love reading books, especially mysteries and thrillers');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (1,'The cat gracefully jumped from the fence to the roof.');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (1,'When Im feeling down, spending time with my cat always cheers me up.');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (2,'He trained his dog to perform tricks like sitting and rolling over');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (3,'They decided to paint the exterior of their house a vibrant blue');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (4,'The forest was filled with tall, majestic trees.');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (5,'She borrowed a captivating mystery book from the library.');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (5,'He spent the entire weekend reading a fascinating science fiction book.');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (4,'In the fall, the leaves of the maple tree turn a brilliant shade of red');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (3,'The old house had a beautiful garden in the backyard');
+INSERT INTO oracion (id_palabra_frase,texto) VALUES (2,'I take my dog for a walk every morning in the park');
