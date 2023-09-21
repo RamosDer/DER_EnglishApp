@@ -3,20 +3,21 @@ INSERT INTO categoria(descripcion) VALUES ('Palabra');
 INSERT INTO categoria(descripcion) VALUES ('Frase');
 
 /*TIPO*/
-INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPSUST',1,'SUSTANTIVO');
-INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPVERB',1,'VERBO');
-INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPADJ',1,'ADJETIVO');
-INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPPRON',1,'PRONOMBRE');
-INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPADV',1,'ADVERBIO');
-INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPSAL',2,'SALUDO');
+INSERT INTO tipo(id_categoria,descripcion) VALUES (1,'SUSTANTIVO');
+INSERT INTO tipo(id_categoria,descripcion) VALUES (1,'VERBO');
+INSERT INTO tipo(id_categoria,descripcion) VALUES (1,'ADJETIVO');
+INSERT INTO tipo(id_categoria,descripcion) VALUES (1,'PRONOMBRE');
+INSERT INTO tipo(id_categoria,descripcion) VALUES (1,'ADVERBIO');
+INSERT INTO tipo(id_categoria,descripcion) VALUES (2,'SALUDO');
 
 /*PALABRA_FRASE*/
-INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (1,'dog','easy');
-INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (1,'house','easy');
-INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (1,'tree','hard');
-INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (1,'book','hard');
-INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (2,'Hello, how are you?','hard');
-INSERT INTO palabra_frase (id_tipo,contenido,dificultad) VALUES (2,'Good morning!','easy');
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPSUS','cat','EASY');
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPSUS','dog','EASY');
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPSUS','house','EASY');
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPSUS','tree','HARD');
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPSUS','book','HARD');
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPSAL','Hello, how are you?','HARD');
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPSAL','Good morning!','EASY');
 
 /*SIGNIFICADO*/
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (1,'A carnivorous mammal of the family Felidae, usually domesticated as a pet');
@@ -42,3 +43,21 @@ INSERT INTO oracion (id_palabra_frase,texto) VALUES (5,'He spent the entire week
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (4,'In the fall, the leaves of the maple tree turn a brilliant shade of red');
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (3,'The old house had a beautiful garden in the backyard');
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (2,'I take my dog for a walk every morning in the park');
+
+
+-- Creamos la función que se ejecutará en el Trigger
+CREATE OR REPLACE FUNCTION generate_cod_tipo()
+RETURNS TRIGGER AS $$
+BEGIN
+  -- Formateamos el cod_tipo como 'TIP' seguido por las primeras tres letras
+  -- de la columna descripcion en mayúsculas.
+  NEW.cod_tipo := 'TIP' || UPPER(SUBSTRING(NEW.descripcion FROM 1 FOR 3));
+  RETURN NEW; -- Retornamos el nuevo registro modificado
+END;
+$$ LANGUAGE plpgsql;
+
+-- Creamos el Trigger que se ejecutará antes de cada INSERT o UPDATE
+-- en la tabla tipo, llamando a la función que acabamos de crear.
+CREATE TRIGGER trg_generate_cod_tipo
+BEFORE INSERT OR UPDATE ON tipo
+FOR EACH ROW EXECUTE FUNCTION generate_cod_tipo();
