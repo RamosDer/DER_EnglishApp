@@ -104,7 +104,7 @@ INSERT INTO significado (id_palabra_frase,descripcion) VALUES (21,'Take in and a
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (22,'To strike or propel something with the foot.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (22,'A sudden and forceful action with the foot.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (22,'In sports, a method of starting or restarting play, as in soccer or American football.');
-INSERT INTO significado (id_palabra_frase,descripcion) VALUES (23,'To hold someone tightly in one's arms, typically to express affection.');
+INSERT INTO significado (id_palabra_frase,descripcion) VALUES (23,'To hold someone tightly in ones arms, typically to express affection.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (23,'A gesture of affectionate embrace.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (23,'To cling closely to something or wrap around it, as in the coastline hugged by the ocean.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (24,'The expanse of air over the Earth; the upper atmosphere.');
@@ -116,7 +116,7 @@ INSERT INTO significado (id_palabra_frase,descripcion) VALUES (25,'To decorate a
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (26,'Difficult to understand, explain, or identify; enigmatic.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (26,'Involving or suggesting the supernatural; mysterious forces.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (26,'Exciting wonder, curiosity, or speculation due to an unknown or secret nature.');
-INSERT INTO significado (id_palabra_frase,descripcion) VALUES (27,'A piece of music performed in someone's honor, typically outside their window.');
+INSERT INTO significado (id_palabra_frase,descripcion) VALUES (27,'A piece of music performed in someones honor, typically outside their window.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (27,'To entertain someone with a serenade.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (27,'A complimentary performance or expression of love through music.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (28,'A strong desire or impulse to travel and explore the world.');
