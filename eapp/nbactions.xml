@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-my_batis_generator</actionName>
+            <displayName>my_batis_generator</displayName>
+            <goals>
+                <goal>mybatis-generator:generate</goal>
+            </goals>
+        </action>
+    </actions>
