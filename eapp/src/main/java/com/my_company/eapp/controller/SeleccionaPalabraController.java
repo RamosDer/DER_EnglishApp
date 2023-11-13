@@ -103,6 +103,7 @@ public class SeleccionaPalabraController {
 
         SelectPalabraDto juego = new SelectPalabraDto();
         juego.setPalabra(palabraSeleccionada.getContenido());
+        juego.setIdPalabraFrase(palabraSeleccionada.getIdPalabraFrase());
 
         List<SignificadoDto> significadosDePalabra = significadoService.selectByPalabraFrasePrimaryKey(palabraSeleccionada.getIdPalabraFrase());
         SignificadoDto significadoCorrecto = significadosDePalabra.get(0); // Tomamos uno al azar como correcto

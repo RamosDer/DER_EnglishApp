@@ -13,6 +13,10 @@ public class Resumen {
 
     private Integer palabrasPracticadas;
 
+    private Integer idUsuario;
+
+    private Integer idTipoPractica;
+
     public Integer getIdResumen() {
         return idResumen;
     }
@@ -51,5 +55,21 @@ public class Resumen {
 
     public void setPalabrasPracticadas(Integer palabrasPracticadas) {
         this.palabrasPracticadas = palabrasPracticadas;
+    }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Integer getIdTipoPractica() {
+        return idTipoPractica;
+    }
+
+    public void setIdTipoPractica(Integer idTipoPractica) {
+        this.idTipoPractica = idTipoPractica;
     }
 }

@@ -34,9 +34,11 @@ public interface ResumenMapper {
 
     @Insert({
         "insert into resumen (tiempo, fecha_de_practica, ",
-        "aciertos, palabras_practicadas)",
+        "aciertos, palabras_practicadas, ",
+        "id_usuario, id_tipo_practica)",
         "values (#{tiempo,jdbcType=INTEGER}, #{fechaDePractica,jdbcType=DATE}, ",
-        "#{aciertos,jdbcType=INTEGER}, #{palabrasPracticadas,jdbcType=INTEGER})"
+        "#{aciertos,jdbcType=INTEGER}, #{palabrasPracticadas,jdbcType=INTEGER}, ",
+        "#{idUsuario,jdbcType=INTEGER}, #{idTipoPractica,jdbcType=INTEGER})"
     })
     @Options(useGeneratedKeys=true,keyProperty="idResumen")
     int insert(Resumen row);
@@ -51,13 +53,16 @@ public interface ResumenMapper {
         @Result(column="tiempo", property="tiempo", jdbcType=JdbcType.INTEGER),
         @Result(column="fecha_de_practica", property="fechaDePractica", jdbcType=JdbcType.DATE),
         @Result(column="aciertos", property="aciertos", jdbcType=JdbcType.INTEGER),
-        @Result(column="palabras_practicadas", property="palabrasPracticadas", jdbcType=JdbcType.INTEGER)
+        @Result(column="palabras_practicadas", property="palabrasPracticadas", jdbcType=JdbcType.INTEGER),
+        @Result(column="id_usuario", property="idUsuario", jdbcType=JdbcType.INTEGER),
+        @Result(column="id_tipo_practica", property="idTipoPractica", jdbcType=JdbcType.INTEGER)
     })
     List<Resumen> selectByExample(ResumenExample example);
 
     @Select({
         "select",
-        "id_resumen, tiempo, fecha_de_practica, aciertos, palabras_practicadas",
+        "id_resumen, tiempo, fecha_de_practica, aciertos, palabras_practicadas, id_usuario, ",
+        "id_tipo_practica",
         "from resumen",
         "where id_resumen = #{idResumen,jdbcType=INTEGER}"
     })
@@ -66,7 +71,9 @@ public interface ResumenMapper {
         @Result(column="tiempo", property="tiempo", jdbcType=JdbcType.INTEGER),
         @Result(column="fecha_de_practica", property="fechaDePractica", jdbcType=JdbcType.DATE),
         @Result(column="aciertos", property="aciertos", jdbcType=JdbcType.INTEGER),
-        @Result(column="palabras_practicadas", property="palabrasPracticadas", jdbcType=JdbcType.INTEGER)
+        @Result(column="palabras_practicadas", property="palabrasPracticadas", jdbcType=JdbcType.INTEGER),
+        @Result(column="id_usuario", property="idUsuario", jdbcType=JdbcType.INTEGER),
+        @Result(column="id_tipo_practica", property="idTipoPractica", jdbcType=JdbcType.INTEGER)
     })
     Resumen selectByPrimaryKey(Integer idResumen);
 
@@ -84,8 +91,34 @@ public interface ResumenMapper {
         "set tiempo = #{tiempo,jdbcType=INTEGER},",
           "fecha_de_practica = #{fechaDePractica,jdbcType=DATE},",
           "aciertos = #{aciertos,jdbcType=INTEGER},",
-          "palabras_practicadas = #{palabrasPracticadas,jdbcType=INTEGER}",
+          "palabras_practicadas = #{palabrasPracticadas,jdbcType=INTEGER},",
+          "id_usuario = #{idUsuario,jdbcType=INTEGER},",
+          "id_tipo_practica = #{idTipoPractica,jdbcType=INTEGER}",
         "where id_resumen = #{idResumen,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Resumen row);
+    
+    @SelectProvider(type=ResumenSqlProvider.class, method="filterSummary")
+    @Results({
+        @Result(column="id_resumen", property="idResumen", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="tiempo", property="tiempo", jdbcType=JdbcType.INTEGER),
+        @Result(column="fecha_de_practica", property="fechaDePractica", jdbcType=JdbcType.DATE),
+        @Result(column="aciertos", property="aciertos", jdbcType=JdbcType.INTEGER),
+        @Result(column="palabras_practicadas", property="palabrasPracticadas", jdbcType=JdbcType.INTEGER),
+        @Result(column="id_tipo_practica", property="idTipoPractica", jdbcType=JdbcType.INTEGER),
+        @Result(column="id_usuario", property="idUsuario", jdbcType=JdbcType.INTEGER)
+    })
+    Resumen getByParameters(ResumenExample example);
+    
+    @SelectProvider(type=ResumenSqlProvider.class, method="selectLastRecordByUser")
+    @Results({
+        @Result(column="id_resumen", property="idResumen", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="tiempo", property="tiempo", jdbcType=JdbcType.INTEGER),
+        @Result(column="fecha_de_practica", property="fechaDePractica", jdbcType=JdbcType.DATE),
+        @Result(column="aciertos", property="aciertos", jdbcType=JdbcType.INTEGER),
+        @Result(column="palabras_practicadas", property="palabrasPracticadas", jdbcType=JdbcType.INTEGER),
+        @Result(column="id_tipo_practica", property="idTipoPractica", jdbcType=JdbcType.INTEGER),
+        @Result(column="id_usuario", property="idUsuario", jdbcType=JdbcType.INTEGER)
+    })
+    Resumen selectLastRecordByUser(Integer idUsuario);
 }

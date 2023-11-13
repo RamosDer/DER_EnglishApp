@@ -72,6 +72,7 @@ public class PalabraFraseServiceImpl implements PalabraFraseService {
         dto.setAprendido(palabraFrase.getAprendido());
         dto.setFechaRegistro(palabraFrase.getFechaRegistro());
         dto.setCodTipo(palabraFrase.getCodTipo());
+        dto.setIdUsuario(palabraFrase.getIdUsuario());
         return dto;
     }
 
@@ -83,6 +84,7 @@ public class PalabraFraseServiceImpl implements PalabraFraseService {
         palabraFrase.setAprendido(dto.getAprendido());
         palabraFrase.setFechaRegistro(dto.getFechaRegistro());
         palabraFrase.setCodTipo(dto.getCodTipo());
+        palabraFrase.setIdUsuario(dto.getIdUsuario());
         return palabraFrase;
     }
     

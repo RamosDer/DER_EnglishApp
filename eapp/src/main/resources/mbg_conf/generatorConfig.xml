@@ -2,6 +2,8 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <context id="DB" targetRuntime="MyBatis3">
+       <property name="overwrite" value="false" />
+       <property name="mergeable" value="true" />
        
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
@@ -14,10 +16,11 @@
         </jdbcConnection>
         <javaModelGenerator 
             targetPackage="com.my_company.eapp.model" 
-            targetProject="src/main/java">
+            targetProject="src/main/java"
+        >
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
-        </javaModelGenerator>
+           </javaModelGenerator>
 
         <javaClientGenerator    
             type="ANNOTATEDMAPPER" 
@@ -26,6 +29,8 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         
+        
+        <!--
         <table tableName="categoria" domainObjectName="Categoria">
             <generatedKey column="id_categoria" sqlStatement="JDBC" identity="true" />
         </table>
@@ -36,24 +41,32 @@
         <table tableName="oracion" domainObjectName="Oracion">
             <generatedKey column="id_oracion" sqlStatement="JDBC" identity="true" />
         </table>
-        <table tableName="palabra_frase" domainObjectName="PalabraFrase">
-            <generatedKey column="id_palabra_frase" sqlStatement="JDBC" identity="true" />
-        </table>
         <table tableName="significado" domainObjectName="Significado">
             <generatedKey column="id_significado" sqlStatement="JDBC" identity="true" />
         </table>
         <table tableName="tipo" domainObjectName="Tipo">
             <generatedKey column="cod_tipo" sqlStatement="JDBC" identity="true" />
         </table> 
+         <table tableName="practica" domainObjectName="Practica">
+            <generatedKey column="id_practica" sqlStatement="JDBC" identity="true" />
+        </table>
+       
+        
         <table tableName="palabra_frase" domainObjectName="PalabraFrase">
             <generatedKey column="id_palabra_frase" sqlStatement="JDBC" identity="true" />
         </table>
-         <table tableName="practica" domainObjectName="Practica">
-            <generatedKey column="id_practica" sqlStatement="JDBC" identity="true" />
+         
+        <table tableName="resumen_detalle" domainObjectName="ResumenDetalle">
+            <generatedKey column="id_resumen_detalle" sqlStatement="JDBC" identity="true" />
+        </table>
+        -->
+        <table tableName="tipo_practica" domainObjectName="TipoPractica">
+            <generatedKey column="id_tipo_practica" sqlStatement="JDBC" identity="true" />
         </table>
         <table tableName="resumen" domainObjectName="Resumen">
             <generatedKey column="id_resumen" sqlStatement="JDBC" identity="true" />
         </table>
+        
         
     </context>
 </generatorConfiguration>

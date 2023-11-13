@@ -14,6 +14,16 @@ public class PalabraFraseDto {
     private Date fechaRegistro;
 
     private String codTipo; 
+    
+    private Integer idUsuario;
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public Integer getIdPalabraFrase() {
         return idPalabraFrase;
@@ -62,4 +72,11 @@ public class PalabraFraseDto {
     public void setCodTipo(String codTipo) {
         this.codTipo = codTipo;
     }
+
+    @Override
+    public String toString() {
+        return "PalabraFraseDto{" + "idPalabraFrase=" + idPalabraFrase + ", contenido=" + contenido + ", dificultad=" + dificultad + ", aprendido=" + aprendido + ", fechaRegistro=" + fechaRegistro + ", codTipo=" + codTipo + ", idUsuario=" + idUsuario + '}';
+    }
+    
+    
 }

@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ResumenExample {
-
     protected String orderByClause;
 
     protected boolean distinct;
@@ -67,7 +66,6 @@ public class ResumenExample {
     }
 
     protected abstract static class GeneratedCriteria {
-
         protected List<Criterion> criteria;
 
         protected GeneratedCriteria() {
@@ -132,32 +130,6 @@ public class ResumenExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Time> timeList = new ArrayList<>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                timeList.add(new java.sql.Time(iter.next().getTime()));
-            }
-            addCriterion(condition, timeList, property);
-        }
-
-        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
         }
 
         public Criteria andIdResumenIsNull() {
@@ -459,17 +431,135 @@ public class ResumenExample {
             addCriterion("palabras_practicadas not between", value1, value2, "palabrasPracticadas");
             return (Criteria) this;
         }
+
+        public Criteria andIdUsuarioIsNull() {
+            addCriterion("id_usuario is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioIsNotNull() {
+            addCriterion("id_usuario is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioEqualTo(Integer value) {
+            addCriterion("id_usuario =", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioNotEqualTo(Integer value) {
+            addCriterion("id_usuario <>", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioGreaterThan(Integer value) {
+            addCriterion("id_usuario >", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id_usuario >=", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioLessThan(Integer value) {
+            addCriterion("id_usuario <", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioLessThanOrEqualTo(Integer value) {
+            addCriterion("id_usuario <=", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioIn(List<Integer> values) {
+            addCriterion("id_usuario in", values, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioNotIn(List<Integer> values) {
+            addCriterion("id_usuario not in", values, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioBetween(Integer value1, Integer value2) {
+            addCriterion("id_usuario between", value1, value2, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioNotBetween(Integer value1, Integer value2) {
+            addCriterion("id_usuario not between", value1, value2, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaIsNull() {
+            addCriterion("id_tipo_practica is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaIsNotNull() {
+            addCriterion("id_tipo_practica is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaEqualTo(Integer value) {
+            addCriterion("id_tipo_practica =", value, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaNotEqualTo(Integer value) {
+            addCriterion("id_tipo_practica <>", value, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaGreaterThan(Integer value) {
+            addCriterion("id_tipo_practica >", value, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id_tipo_practica >=", value, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaLessThan(Integer value) {
+            addCriterion("id_tipo_practica <", value, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaLessThanOrEqualTo(Integer value) {
+            addCriterion("id_tipo_practica <=", value, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaIn(List<Integer> values) {
+            addCriterion("id_tipo_practica in", values, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaNotIn(List<Integer> values) {
+            addCriterion("id_tipo_practica not in", values, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaBetween(Integer value1, Integer value2) {
+            addCriterion("id_tipo_practica between", value1, value2, "idTipoPractica");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdTipoPracticaNotBetween(Integer value1, Integer value2) {
+            addCriterion("id_tipo_practica not between", value1, value2, "idTipoPractica");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }
     }
 
     public static class Criterion {
-
         private String condition;
 
         private Object value;

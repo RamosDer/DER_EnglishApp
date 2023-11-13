@@ -28,7 +28,7 @@ public class ResumenSqlProvider {
         sql.INSERT_INTO("resumen");
         
         if (row.getTiempo() != null) {
-            sql.VALUES("tiempo", "#{tiempo,jdbcType=TIME}");
+            sql.VALUES("tiempo", "#{tiempo,jdbcType=INTEGER}");
         }
         
         if (row.getFechaDePractica() != null) {
@@ -41,6 +41,14 @@ public class ResumenSqlProvider {
         
         if (row.getPalabrasPracticadas() != null) {
             sql.VALUES("palabras_practicadas", "#{palabrasPracticadas,jdbcType=INTEGER}");
+        }
+        
+        if (row.getIdUsuario() != null) {
+            sql.VALUES("id_usuario", "#{idUsuario,jdbcType=INTEGER}");
+        }
+        
+        if (row.getIdTipoPractica() != null) {
+            sql.VALUES("id_tipo_practica", "#{idTipoPractica,jdbcType=INTEGER}");
         }
         
         return sql.toString();
@@ -57,6 +65,8 @@ public class ResumenSqlProvider {
         sql.SELECT("fecha_de_practica");
         sql.SELECT("aciertos");
         sql.SELECT("palabras_practicadas");
+        sql.SELECT("id_usuario");
+        sql.SELECT("id_tipo_practica");
         sql.FROM("resumen");
         applyWhere(sql, example, false);
         
@@ -94,6 +104,14 @@ public class ResumenSqlProvider {
             sql.SET("palabras_practicadas = #{row.palabrasPracticadas,jdbcType=INTEGER}");
         }
         
+        if (row.getIdUsuario() != null) {
+            sql.SET("id_usuario = #{row.idUsuario,jdbcType=INTEGER}");
+        }
+        
+        if (row.getIdTipoPractica() != null) {
+            sql.SET("id_tipo_practica = #{row.idTipoPractica,jdbcType=INTEGER}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -107,6 +125,8 @@ public class ResumenSqlProvider {
         sql.SET("fecha_de_practica = #{row.fechaDePractica,jdbcType=DATE}");
         sql.SET("aciertos = #{row.aciertos,jdbcType=INTEGER}");
         sql.SET("palabras_practicadas = #{row.palabrasPracticadas,jdbcType=INTEGER}");
+        sql.SET("id_usuario = #{row.idUsuario,jdbcType=INTEGER}");
+        sql.SET("id_tipo_practica = #{row.idTipoPractica,jdbcType=INTEGER}");
         
         ResumenExample example = (ResumenExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -133,8 +153,48 @@ public class ResumenSqlProvider {
             sql.SET("palabras_practicadas = #{palabrasPracticadas,jdbcType=INTEGER}");
         }
         
+        if (row.getIdUsuario() != null) {
+            sql.SET("id_usuario = #{idUsuario,jdbcType=INTEGER}");
+        }
+        
+        if (row.getIdTipoPractica() != null) {
+            sql.SET("id_tipo_practica = #{idTipoPractica,jdbcType=INTEGER}");
+        }
+        
         sql.WHERE("id_resumen = #{idResumen,jdbcType=INTEGER}");
         
+        return sql.toString();
+    }
+    
+    public String filterSummary(ResumenExample example) {
+        SQL sql = new SQL();
+        if (example != null && example.isDistinct()) {
+            sql.SELECT_DISTINCT("id_resumen");
+        } else {
+            sql.SELECT("id_resumen");
+        }
+        sql.SELECT("tiempo");
+        sql.SELECT("fecha_de_practica");
+        sql.SELECT("aciertos");
+        sql.SELECT("palabras_practicadas");
+        sql.SELECT("id_tipo_practica");
+        sql.SELECT("id_usuario");
+        sql.FROM("resumen");
+        applyWhere(sql, example, false);
+
+        if (example != null && example.getOrderByClause() != null) {
+            sql.ORDER_BY(example.getOrderByClause());
+        }
+
+        return sql.toString();
+    }
+
+    public String selectLastRecordByUser(Integer userId) {
+        SQL sql = new SQL();
+        sql.SELECT("*").FROM("resumen");
+        sql.WHERE("id_usuario = #{userId, jdbcType=INTEGER}");
+        sql.ORDER_BY("id_resumen DESC");
+        sql.LIMIT(1);
         return sql.toString();
     }
 

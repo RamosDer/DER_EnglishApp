@@ -1,76 +1,58 @@
 package com.my_company.eapp.dao;
 
-import com.my_company.eapp.model.Usuario;
-import com.my_company.eapp.model.UsuarioExample.Criteria;
-import com.my_company.eapp.model.UsuarioExample.Criterion;
-import com.my_company.eapp.model.UsuarioExample;
+import com.my_company.eapp.model.ResumenDetalle;
+import com.my_company.eapp.model.ResumenDetalleExample.Criteria;
+import com.my_company.eapp.model.ResumenDetalleExample.Criterion;
+import com.my_company.eapp.model.ResumenDetalleExample;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
 
-public class UsuarioSqlProvider {
-    public String countByExample(UsuarioExample example) {
+public class ResumenDetalleSqlProvider {
+    public String countByExample(ResumenDetalleExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("usuario");
+        sql.SELECT("count(*)").FROM("resumen_detalle");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(UsuarioExample example) {
+    public String deleteByExample(ResumenDetalleExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("usuario");
+        sql.DELETE_FROM("resumen_detalle");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String doesUsernameExist(String username) {
+    public String insertSelective(ResumenDetalle row) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)")
-           .FROM("usuario")
-           .WHERE("nombre_usuario = #{username}");
-        return sql.toString();
-    }
-
-    public String insertSelective(Usuario row) {
-        SQL sql = new SQL();
-        sql.INSERT_INTO("usuario");
+        sql.INSERT_INTO("resumen_detalle");
         
-        if (row.getNombreUsuario() != null) {
-            sql.VALUES("nombre_usuario", "#{nombreUsuario,jdbcType=VARCHAR}");
+        if (row.getIdPalabraFrase() != null) {
+            sql.VALUES("id_palabra_frase", "#{idPalabraFrase,jdbcType=INTEGER}");
         }
         
-        if (row.getNombre() != null) {
-            sql.VALUES("nombre", "#{nombre,jdbcType=VARCHAR}");
+        if (row.getCorrecto() != null) {
+            sql.VALUES("correcto", "#{correcto,jdbcType=BIT}");
         }
         
-        if (row.getApellido() != null) {
-            sql.VALUES("apellido", "#{apellido,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getFechaRegistro() != null) {
-            sql.VALUES("fecha_registro", "#{fechaRegistro,jdbcType=DATE}");
-        }
-        
-        if (row.getContrasenha() != null) {
-            sql.VALUES("contrasenha", "#{contrasenha,jdbcType=VARCHAR}");
+        if (row.getIdResumen() != null) {
+            sql.VALUES("id_resumen", "#{idResumen,jdbcType=INTEGER}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(UsuarioExample example) {
+    public String selectByExample(ResumenDetalleExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id_usuario");
+            sql.SELECT_DISTINCT("id_resumen_detalle");
         } else {
-            sql.SELECT("id_usuario");
+            sql.SELECT("id_resumen_detalle");
         }
-        sql.SELECT("nombre_usuario");
-        sql.SELECT("nombre");
-        sql.SELECT("apellido");
-        sql.SELECT("fecha_registro");
-        sql.SELECT("contrasenha");
-        sql.FROM("usuario");
+        sql.SELECT("id_palabra_frase");
+        sql.SELECT("correcto");
+        sql.SELECT("id_resumen");
+        sql.FROM("resumen_detalle");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -81,34 +63,26 @@ public class UsuarioSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Usuario row = (Usuario) parameter.get("row");
-        UsuarioExample example = (UsuarioExample) parameter.get("example");
+        ResumenDetalle row = (ResumenDetalle) parameter.get("row");
+        ResumenDetalleExample example = (ResumenDetalleExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("usuario");
+        sql.UPDATE("resumen_detalle");
         
-        if (row.getIdUsuario() != null) {
-            sql.SET("id_usuario = #{row.idUsuario,jdbcType=INTEGER}");
+        if (row.getIdResumenDetalle() != null) {
+            sql.SET("id_resumen_detalle = #{row.idResumenDetalle,jdbcType=BIGINT}");
         }
         
-        if (row.getNombreUsuario() != null) {
-            sql.SET("nombre_usuario = #{row.nombreUsuario,jdbcType=VARCHAR}");
+        if (row.getIdPalabraFrase() != null) {
+            sql.SET("id_palabra_frase = #{row.idPalabraFrase,jdbcType=INTEGER}");
         }
         
-        if (row.getNombre() != null) {
-            sql.SET("nombre = #{row.nombre,jdbcType=VARCHAR}");
+        if (row.getCorrecto() != null) {
+            sql.SET("correcto = #{row.correcto,jdbcType=BIT}");
         }
         
-        if (row.getApellido() != null) {
-            sql.SET("apellido = #{row.apellido,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getFechaRegistro() != null) {
-            sql.SET("fecha_registro = #{row.fechaRegistro,jdbcType=DATE}");
-        }
-        
-        if (row.getContrasenha() != null) {
-            sql.SET("contrasenha = #{row.contrasenha,jdbcType=VARCHAR}");
+        if (row.getIdResumen() != null) {
+            sql.SET("id_resumen = #{row.idResumen,jdbcType=INTEGER}");
         }
         
         applyWhere(sql, example, true);
@@ -117,58 +91,54 @@ public class UsuarioSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("usuario");
+        sql.UPDATE("resumen_detalle");
         
-        sql.SET("id_usuario = #{row.idUsuario,jdbcType=INTEGER}");
-        sql.SET("nombre_usuario = #{row.nombreUsuario,jdbcType=VARCHAR}");
-        sql.SET("nombre = #{row.nombre,jdbcType=VARCHAR}");
-        sql.SET("apellido = #{row.apellido,jdbcType=VARCHAR}");
-        sql.SET("fecha_registro = #{row.fechaRegistro,jdbcType=DATE}");
-        sql.SET("contrasenha = #{row.contrasenha,jdbcType=VARCHAR}");
+        sql.SET("id_resumen_detalle = #{row.idResumenDetalle,jdbcType=BIGINT}");
+        sql.SET("id_palabra_frase = #{row.idPalabraFrase,jdbcType=INTEGER}");
+        sql.SET("correcto = #{row.correcto,jdbcType=BIT}");
+        sql.SET("id_resumen = #{row.idResumen,jdbcType=INTEGER}");
         
-        UsuarioExample example = (UsuarioExample) parameter.get("example");
+        ResumenDetalleExample example = (ResumenDetalleExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Usuario row) {
+    public String updateByPrimaryKeySelective(ResumenDetalle row) {
         SQL sql = new SQL();
-        sql.UPDATE("usuario");
+        sql.UPDATE("resumen_detalle");
         
-        if (row.getNombreUsuario() != null) {
-            sql.SET("nombre_usuario = #{nombreUsuario,jdbcType=VARCHAR}");
+        if (row.getIdPalabraFrase() != null) {
+            sql.SET("id_palabra_frase = #{idPalabraFrase,jdbcType=INTEGER}");
         }
         
-        if (row.getNombre() != null) {
-            sql.SET("nombre = #{nombre,jdbcType=VARCHAR}");
+        if (row.getCorrecto() != null) {
+            sql.SET("correcto = #{correcto,jdbcType=BIT}");
         }
         
-        if (row.getApellido() != null) {
-            sql.SET("apellido = #{apellido,jdbcType=VARCHAR}");
+        if (row.getIdResumen() != null) {
+            sql.SET("id_resumen = #{idResumen,jdbcType=INTEGER}");
         }
         
-        if (row.getFechaRegistro() != null) {
-            sql.SET("fecha_registro = #{fechaRegistro,jdbcType=DATE}");
-        }
-        
-        if (row.getContrasenha() != null) {
-            sql.SET("contrasenha = #{contrasenha,jdbcType=VARCHAR}");
-        }
-        
-        sql.WHERE("id_usuario = #{idUsuario,jdbcType=INTEGER}");
+        sql.WHERE("id_resumen_detalle = #{idResumenDetalle,jdbcType=BIGINT}");
         
         return sql.toString();
     }
     
-    public String getUserByUsername(String username) {
+    public String selectByIdResumen(Integer idResumen) {
         SQL sql = new SQL();
-        sql.SELECT("*")
-           .FROM("usuario")
-           .WHERE("nombre_usuario = #{username}");
+        
+        sql.SELECT("id_resumen_detalle");
+        sql.SELECT("id_palabra_frase");
+        sql.SELECT("correcto");
+        sql.SELECT("id_resumen");
+        sql.FROM("resumen_detalle");
+        
+        sql.WHERE("id_resumen = #{idResumen,jdbcType=INTEGER}");
+        
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, UsuarioExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, ResumenDetalleExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

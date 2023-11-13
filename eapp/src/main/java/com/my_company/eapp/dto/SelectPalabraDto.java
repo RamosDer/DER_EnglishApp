@@ -7,6 +7,7 @@ public class SelectPalabraDto {
     private String palabra;
     private List<String> opciones;
     private String respuestaCorrecta;
+    private Integer idPalabraFrase;
 
     public String getPalabra() {
         return palabra;
@@ -31,5 +32,14 @@ public class SelectPalabraDto {
     public void setRespuestaCorrecta(String respuestaCorrecta) {
         this.respuestaCorrecta = respuestaCorrecta;
     }
+
+    public Integer getIdPalabraFrase() {
+        return idPalabraFrase;
+    }
+
+    public void setIdPalabraFrase(Integer idPalabraFrase) {
+        this.idPalabraFrase = idPalabraFrase;
+    }
+    
     
 }

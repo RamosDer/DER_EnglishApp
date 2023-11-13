@@ -443,7 +443,7 @@ public class PalabraFraseExample {
         }
 
         public Criteria andFechaRegistroBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("p.fecha_registro between", value1, value2, "fechaRegistro");
+            addCriterionForJDBCDate("fecha_registro between", value1, value2, "fechaRegistro");
             return (Criteria) this;
         }
 
@@ -468,17 +468,17 @@ public class PalabraFraseExample {
         }
 
         public Criteria andCodTipoNotEqualTo(String value) {
-            addCriterion("cod_tipo <>", value, "codTipo");
+            addCriterion("p.cod_tipo <>", value, "codTipo");
             return (Criteria) this;
         }
 
         public Criteria andCodTipoGreaterThan(String value) {
-            addCriterion("cod_tipo >", value, "codTipo");
+            addCriterion("p.cod_tipo >", value, "codTipo");
             return (Criteria) this;
         }
 
         public Criteria andCodTipoGreaterThanOrEqualTo(String value) {
-            addCriterion("cod_tipo >=", value, "codTipo");
+            addCriterion("p.cod_tipo >=", value, "codTipo");
             return (Criteria) this;
         }
 
@@ -493,7 +493,7 @@ public class PalabraFraseExample {
         }
 
         public Criteria andCodTipoLike(String value) {
-            addCriterion("cod_tipo like", value, "codTipo");
+            addCriterion("p.cod_tipo like", value, "codTipo");
             return (Criteria) this;
         }
 
@@ -513,12 +513,72 @@ public class PalabraFraseExample {
         }
 
         public Criteria andCodTipoBetween(String value1, String value2) {
-            addCriterion("cod_tipo between", value1, value2, "codTipo");
+            addCriterion("p.cod_tipo between", value1, value2, "codTipo");
             return (Criteria) this;
         }
 
         public Criteria andCodTipoNotBetween(String value1, String value2) {
-            addCriterion("cod_tipo not between", value1, value2, "codTipo");
+            addCriterion("p.cod_tipo not between", value1, value2, "codTipo");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioIsNull() {
+            addCriterion("id_usuario is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioIsNotNull() {
+            addCriterion("id_usuario is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioEqualTo(Integer value) {
+            addCriterion("id_usuario =", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioNotEqualTo(Integer value) {
+            addCriterion("id_usuario <>", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioGreaterThan(Integer value) {
+            addCriterion("id_usuario >", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id_usuario >=", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioLessThan(Integer value) {
+            addCriterion("id_usuario <", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioLessThanOrEqualTo(Integer value) {
+            addCriterion("id_usuario <=", value, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioIn(List<Integer> values) {
+            addCriterion("id_usuario in", values, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioNotIn(List<Integer> values) {
+            addCriterion("id_usuario not in", values, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioBetween(Integer value1, Integer value2) {
+            addCriterion("id_usuario between", value1, value2, "idUsuario");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdUsuarioNotBetween(Integer value1, Integer value2) {
+            addCriterion("id_usuario not between", value1, value2, "idUsuario");
             return (Criteria) this;
         }
     }

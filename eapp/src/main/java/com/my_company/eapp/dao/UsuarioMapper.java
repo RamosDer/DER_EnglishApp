@@ -112,5 +112,16 @@ public interface UsuarioMapper {
         @Result(column="contrasenha", property="contrasenha", jdbcType=JdbcType.VARCHAR)
     })
     Usuario selectUsuarioByNombreUsuario(String nombreUsuario);
+    
+    @SelectProvider(type=UsuarioSqlProvider.class, method="getUserByUsername")
+    @Results({
+        @Result(column="id_usuario", property="idUsuario", jdbcType=JdbcType.INTEGER, id=true),
+        @Result(column="nombre_usuario", property="nombreUsuario", jdbcType=JdbcType.VARCHAR),
+        @Result(column="nombre", property="nombre", jdbcType=JdbcType.VARCHAR),
+        @Result(column="apellido", property="apellido", jdbcType=JdbcType.VARCHAR),
+        @Result(column="fecha_registro", property="fechaRegistro", jdbcType=JdbcType.DATE),
+        @Result(column="contrasenha", property="contrasenha", jdbcType=JdbcType.VARCHAR)
+    })        
+    Usuario getUserByUsername(String username);
 
 }

@@ -66,6 +66,12 @@ public class UsuarioController {
         Boolean exists = usuarioService.doesUsernameExist(username);
         return new ResponseEntity<>(exists, HttpStatus.OK);
     }
+    
+    @GetMapping("/getByUsername/{username}")
+    public ResponseEntity<Integer> getByUsername(@PathVariable String username) {
+        Integer idUsuario = usuarioService.getUserByUsername(username).getIdUsuario();
+        return new ResponseEntity<>(idUsuario, HttpStatus.OK);
+    }
 
     /*
     @PostMapping("/login")

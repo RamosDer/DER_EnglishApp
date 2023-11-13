@@ -12,6 +12,8 @@ public class ResumenDto {
     private Integer aciertos;
 
     private Integer palabrasPracticadas;
+    
+    private Integer idUsuario;
 
     public Integer getIdResumen() {
         return idResumen;
@@ -52,4 +54,14 @@ public class ResumenDto {
     public void setPalabrasPracticadas(Integer palabrasPracticadas) {
         this.palabrasPracticadas = palabrasPracticadas;
     }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    
+    
 }

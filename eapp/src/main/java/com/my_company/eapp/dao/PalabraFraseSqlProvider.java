@@ -9,7 +9,6 @@ import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
 
 public class PalabraFraseSqlProvider {
-
     public String countByExample(PalabraFraseExample example) {
         SQL sql = new SQL();
         sql.SELECT("count(*)").FROM("palabra_frase");
@@ -27,27 +26,31 @@ public class PalabraFraseSqlProvider {
     public String insertSelective(PalabraFrase row) {
         SQL sql = new SQL();
         sql.INSERT_INTO("palabra_frase");
-
+        
         if (row.getContenido() != null) {
             sql.VALUES("contenido", "#{contenido,jdbcType=VARCHAR}");
         }
-
+        
         if (row.getDificultad() != null) {
             sql.VALUES("dificultad", "#{dificultad,jdbcType=VARCHAR}");
         }
-
+        
         if (row.getAprendido() != null) {
             sql.VALUES("aprendido", "#{aprendido,jdbcType=BIT}");
         }
-
+        
         if (row.getFechaRegistro() != null) {
             sql.VALUES("fecha_registro", "#{fechaRegistro,jdbcType=DATE}");
         }
-
+        
         if (row.getCodTipo() != null) {
             sql.VALUES("cod_tipo", "#{codTipo,jdbcType=VARCHAR}");
         }
-
+        
+        if (row.getIdUsuario() != null) {
+            sql.VALUES("id_usuario", "#{idUsuario,jdbcType=INTEGER}");
+        }
+        
         return sql.toString();
     }
 
@@ -64,6 +67,7 @@ public class PalabraFraseSqlProvider {
         sql.SELECT("p.aprendido");
         sql.SELECT("p.fecha_registro");
         sql.SELECT("p.cod_tipo");
+        sql.SELECT("p.id_usuario");
         
         sql.FROM("palabra_frase p");
         
@@ -86,34 +90,38 @@ public class PalabraFraseSqlProvider {
     public String updateByExampleSelective(Map<String, Object> parameter) {
         PalabraFrase row = (PalabraFrase) parameter.get("row");
         PalabraFraseExample example = (PalabraFraseExample) parameter.get("example");
-
+        
         SQL sql = new SQL();
         sql.UPDATE("palabra_frase");
-
+        
         if (row.getIdPalabraFrase() != null) {
             sql.SET("id_palabra_frase = #{row.idPalabraFrase,jdbcType=INTEGER}");
         }
-
+        
         if (row.getContenido() != null) {
             sql.SET("contenido = #{row.contenido,jdbcType=VARCHAR}");
         }
-
+        
         if (row.getDificultad() != null) {
             sql.SET("dificultad = #{row.dificultad,jdbcType=VARCHAR}");
         }
-
+        
         if (row.getAprendido() != null) {
             sql.SET("aprendido = #{row.aprendido,jdbcType=BIT}");
         }
-
+        
         if (row.getFechaRegistro() != null) {
             sql.SET("fecha_registro = #{row.fechaRegistro,jdbcType=DATE}");
         }
-
+        
         if (row.getCodTipo() != null) {
             sql.SET("cod_tipo = #{row.codTipo,jdbcType=VARCHAR}");
         }
-
+        
+        if (row.getIdUsuario() != null) {
+            sql.SET("id_usuario = #{row.idUsuario,jdbcType=INTEGER}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -121,14 +129,15 @@ public class PalabraFraseSqlProvider {
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
         sql.UPDATE("palabra_frase");
-
+        
         sql.SET("id_palabra_frase = #{row.idPalabraFrase,jdbcType=INTEGER}");
         sql.SET("contenido = #{row.contenido,jdbcType=VARCHAR}");
         sql.SET("dificultad = #{row.dificultad,jdbcType=VARCHAR}");
         sql.SET("aprendido = #{row.aprendido,jdbcType=BIT}");
         sql.SET("fecha_registro = #{row.fechaRegistro,jdbcType=DATE}");
         sql.SET("cod_tipo = #{row.codTipo,jdbcType=VARCHAR}");
-
+        sql.SET("id_usuario = #{row.idUsuario,jdbcType=INTEGER}");
+        
         PalabraFraseExample example = (PalabraFraseExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
@@ -137,46 +146,51 @@ public class PalabraFraseSqlProvider {
     public String updateByPrimaryKeySelective(PalabraFrase row) {
         SQL sql = new SQL();
         sql.UPDATE("palabra_frase");
-
+        
         if (row.getContenido() != null) {
             sql.SET("contenido = #{contenido,jdbcType=VARCHAR}");
         }
-
+        
         if (row.getDificultad() != null) {
             sql.SET("dificultad = #{dificultad,jdbcType=VARCHAR}");
         }
-
+        
         if (row.getAprendido() != null) {
             sql.SET("aprendido = #{aprendido,jdbcType=BIT}");
         }
-
+        
         if (row.getFechaRegistro() != null) {
             sql.SET("fecha_registro = #{fechaRegistro,jdbcType=DATE}");
         }
-
+        
         if (row.getCodTipo() != null) {
             sql.SET("cod_tipo = #{codTipo,jdbcType=VARCHAR}");
         }
-
+        
+        if (row.getIdUsuario() != null) {
+            sql.SET("id_usuario = #{idUsuario,jdbcType=INTEGER}");
+        }
+        
         sql.WHERE("id_palabra_frase = #{idPalabraFrase,jdbcType=INTEGER}");
-
+        
         return sql.toString();
     }
-
+    
     public String getPalabraFraseIdByContenido(String contenido) {
         SQL sql = new SQL();
-        sql.SELECT("id_palabra_frase") // seleccionas el id_palabra_frase
+        sql.SELECT("id_palabra_frase") // selecciona el id_palabra_frase
                 .FROM("palabra_frase") // de la tabla palabra_frase
                 .WHERE("contenido = #{contenido,jdbcType=VARCHAR}"); // donde el contenido coincide con el parámetro proporcionado
 
         return sql.toString();
     }
 
+
     protected void applyWhere(SQL sql, PalabraFraseExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }
-
+        
         String parmPhrase1;
         String parmPhrase1_th;
         String parmPhrase2;
@@ -198,7 +212,7 @@ public class PalabraFraseSqlProvider {
             parmPhrase3 = "#{oredCriteria[%d].allCriteria[%d].value[%d]}";
             parmPhrase3_th = "#{oredCriteria[%d].allCriteria[%d].value[%d],typeHandler=%s}";
         }
-
+        
         StringBuilder sb = new StringBuilder();
         List<Criteria> oredCriteria = example.getOredCriteria();
         boolean firstCriteria = true;
@@ -210,7 +224,7 @@ public class PalabraFraseSqlProvider {
                 } else {
                     sb.append(" or ");
                 }
-
+                
                 sb.append('(');
                 List<Criterion> criterions = criteria.getAllCriteria();
                 boolean firstCriterion = true;
@@ -221,14 +235,14 @@ public class PalabraFraseSqlProvider {
                     } else {
                         sb.append(" and ");
                     }
-
+                    
                     if (criterion.isNoValue()) {
                         sb.append(criterion.getCondition());
                     } else if (criterion.isSingleValue()) {
                         if (criterion.getTypeHandler() == null) {
                             sb.append(String.format(parmPhrase1, criterion.getCondition(), i, j));
                         } else {
-                            sb.append(String.format(parmPhrase1_th, criterion.getCondition(), i, j, criterion.getTypeHandler()));
+                            sb.append(String.format(parmPhrase1_th, criterion.getCondition(), i, j,criterion.getTypeHandler()));
                         }
                     } else if (criterion.isBetweenValue()) {
                         if (criterion.getTypeHandler() == null) {
@@ -259,7 +273,7 @@ public class PalabraFraseSqlProvider {
                 sb.append(')');
             }
         }
-
+        
         if (sb.length() > 0) {
             sql.WHERE(sb.toString());
         }

@@ -18,6 +18,10 @@ public interface  ResumenService {
     List<ResumenDto> selectByExample(ResumenExample example);
 
     ResumenDto selectByPrimaryKey(Integer idResumen);
+    
+    ResumenDto getByParameters(ResumenExample example);
+    
+    ResumenDto selectLastRecordByUser(Integer idUsuario);
 
     int updateByExampleSelective(ResumenDto resumenDto, ResumenExample example);
 

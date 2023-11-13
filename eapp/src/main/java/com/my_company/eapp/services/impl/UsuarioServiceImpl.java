@@ -83,6 +83,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         // ¡Asegúrate de implementar esto correctamente!
         return BCrypt.checkpw(inputPassword, hashedPassword);
     }
+
+    @Override
+    public Usuario getUserByUsername(String username) {
+        return usuarioMapper.getUserByUsername(username);
+    }
     
     
 }

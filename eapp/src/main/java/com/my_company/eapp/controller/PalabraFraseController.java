@@ -2,7 +2,10 @@ package com.my_company.eapp.controller;
 
 import com.my_company.eapp.dto.PalabraFraseDto;
 import com.my_company.eapp.model.PalabraFraseExample;
+import com.my_company.eapp.model.Usuario;
+import com.my_company.eapp.model.UsuarioExample;
 import com.my_company.eapp.services.PalabraFraseService;
+import com.my_company.eapp.services.UsuarioService;
 import java.util.Arrays;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class PalabraFraseController {
 
     private final PalabraFraseService palabraFraseService;
+    
+    @Autowired
+    private UsuarioService usuarioService;
     
     private static final Logger logger = LogManager.getLogger(PalabraFraseController.class);
 
@@ -38,6 +44,7 @@ public class PalabraFraseController {
 
     @PostMapping
     public int createPalabraFrase(@RequestBody PalabraFraseDto palabraFraseDto) {
+        logger.info("Ingresa al metodo createPalabraFrase: " + palabraFraseDto.toString());
         return palabraFraseService.createPalabraFrase(palabraFraseDto);
     }
 
@@ -64,9 +71,10 @@ public class PalabraFraseController {
             @RequestParam(name = "codTipo", required = false) String codTipo,
             @RequestParam(name = "fechaInicio", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaInicio,
             @RequestParam(name = "fechaFin", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin,
-            @RequestParam(name = "idCategoria", required = false) Integer idCategoria
+            @RequestParam(name = "idCategoria", required = false) Integer idCategoria,
+            @RequestParam(name = "username", required = false) String username
             ) {
-
+        
         // Construye el objeto PalabraFraseExample
         PalabraFraseExample example = new PalabraFraseExample();
         PalabraFraseExample.Criteria criteria = example.createCriteria();
@@ -98,6 +106,19 @@ public class PalabraFraseController {
             logger.info("fechaInicio: " + fechaInicio + "FechaFin: " + fechaFin);
             criteria.andFechaRegistroBetween(fechaInicio, fechaFin);
         }
+        
+        UsuarioExample userExample = new UsuarioExample();
+        UsuarioExample.Criteria criteriaUsuario = userExample.createCriteria();
+        
+        if (username != null){
+            logger.info("Usuario: " +username);
+            criteriaUsuario.andNombreUsuarioEqualTo(username);
+            Usuario usuario = new Usuario();
+            usuario = usuarioService.getUserByUsername(username);
+            criteria.andIdUsuarioEqualTo(usuario.getIdUsuario());
+        }
+      
+        
 
         // Llama al método de búsqueda en el servicio
         return palabraFraseService.buscarPalabrasConFiltros(example, idCategoria);

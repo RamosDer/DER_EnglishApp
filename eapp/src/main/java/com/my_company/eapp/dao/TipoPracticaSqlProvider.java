@@ -1,76 +1,48 @@
 package com.my_company.eapp.dao;
 
-import com.my_company.eapp.model.Usuario;
-import com.my_company.eapp.model.UsuarioExample.Criteria;
-import com.my_company.eapp.model.UsuarioExample.Criterion;
-import com.my_company.eapp.model.UsuarioExample;
+import com.my_company.eapp.model.TipoPractica;
+import com.my_company.eapp.model.TipoPracticaExample.Criteria;
+import com.my_company.eapp.model.TipoPracticaExample.Criterion;
+import com.my_company.eapp.model.TipoPracticaExample;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;
 
-public class UsuarioSqlProvider {
-    public String countByExample(UsuarioExample example) {
+public class TipoPracticaSqlProvider {
+    public String countByExample(TipoPracticaExample example) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)").FROM("usuario");
+        sql.SELECT("count(*)").FROM("tipo_practica");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String deleteByExample(UsuarioExample example) {
+    public String deleteByExample(TipoPracticaExample example) {
         SQL sql = new SQL();
-        sql.DELETE_FROM("usuario");
+        sql.DELETE_FROM("tipo_practica");
         applyWhere(sql, example, false);
         return sql.toString();
     }
 
-    public String doesUsernameExist(String username) {
+    public String insertSelective(TipoPractica row) {
         SQL sql = new SQL();
-        sql.SELECT("count(*)")
-           .FROM("usuario")
-           .WHERE("nombre_usuario = #{username}");
-        return sql.toString();
-    }
-
-    public String insertSelective(Usuario row) {
-        SQL sql = new SQL();
-        sql.INSERT_INTO("usuario");
+        sql.INSERT_INTO("tipo_practica");
         
-        if (row.getNombreUsuario() != null) {
-            sql.VALUES("nombre_usuario", "#{nombreUsuario,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getNombre() != null) {
-            sql.VALUES("nombre", "#{nombre,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getApellido() != null) {
-            sql.VALUES("apellido", "#{apellido,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getFechaRegistro() != null) {
-            sql.VALUES("fecha_registro", "#{fechaRegistro,jdbcType=DATE}");
-        }
-        
-        if (row.getContrasenha() != null) {
-            sql.VALUES("contrasenha", "#{contrasenha,jdbcType=VARCHAR}");
+        if (row.getTipo() != null) {
+            sql.VALUES("tipo", "#{tipo,jdbcType=VARCHAR}");
         }
         
         return sql.toString();
     }
 
-    public String selectByExample(UsuarioExample example) {
+    public String selectByExample(TipoPracticaExample example) {
         SQL sql = new SQL();
         if (example != null && example.isDistinct()) {
-            sql.SELECT_DISTINCT("id_usuario");
+            sql.SELECT_DISTINCT("id_tipo_practica");
         } else {
-            sql.SELECT("id_usuario");
+            sql.SELECT("id_tipo_practica");
         }
-        sql.SELECT("nombre_usuario");
-        sql.SELECT("nombre");
-        sql.SELECT("apellido");
-        sql.SELECT("fecha_registro");
-        sql.SELECT("contrasenha");
-        sql.FROM("usuario");
+        sql.SELECT("tipo");
+        sql.FROM("tipo_practica");
         applyWhere(sql, example, false);
         
         if (example != null && example.getOrderByClause() != null) {
@@ -81,34 +53,18 @@ public class UsuarioSqlProvider {
     }
 
     public String updateByExampleSelective(Map<String, Object> parameter) {
-        Usuario row = (Usuario) parameter.get("row");
-        UsuarioExample example = (UsuarioExample) parameter.get("example");
+        TipoPractica row = (TipoPractica) parameter.get("row");
+        TipoPracticaExample example = (TipoPracticaExample) parameter.get("example");
         
         SQL sql = new SQL();
-        sql.UPDATE("usuario");
+        sql.UPDATE("tipo_practica");
         
-        if (row.getIdUsuario() != null) {
-            sql.SET("id_usuario = #{row.idUsuario,jdbcType=INTEGER}");
+        if (row.getIdTipoPractica() != null) {
+            sql.SET("id_tipo_practica = #{row.idTipoPractica,jdbcType=INTEGER}");
         }
         
-        if (row.getNombreUsuario() != null) {
-            sql.SET("nombre_usuario = #{row.nombreUsuario,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getNombre() != null) {
-            sql.SET("nombre = #{row.nombre,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getApellido() != null) {
-            sql.SET("apellido = #{row.apellido,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getFechaRegistro() != null) {
-            sql.SET("fecha_registro = #{row.fechaRegistro,jdbcType=DATE}");
-        }
-        
-        if (row.getContrasenha() != null) {
-            sql.SET("contrasenha = #{row.contrasenha,jdbcType=VARCHAR}");
+        if (row.getTipo() != null) {
+            sql.SET("tipo = #{row.tipo,jdbcType=VARCHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -117,58 +73,30 @@ public class UsuarioSqlProvider {
 
     public String updateByExample(Map<String, Object> parameter) {
         SQL sql = new SQL();
-        sql.UPDATE("usuario");
+        sql.UPDATE("tipo_practica");
         
-        sql.SET("id_usuario = #{row.idUsuario,jdbcType=INTEGER}");
-        sql.SET("nombre_usuario = #{row.nombreUsuario,jdbcType=VARCHAR}");
-        sql.SET("nombre = #{row.nombre,jdbcType=VARCHAR}");
-        sql.SET("apellido = #{row.apellido,jdbcType=VARCHAR}");
-        sql.SET("fecha_registro = #{row.fechaRegistro,jdbcType=DATE}");
-        sql.SET("contrasenha = #{row.contrasenha,jdbcType=VARCHAR}");
+        sql.SET("id_tipo_practica = #{row.idTipoPractica,jdbcType=INTEGER}");
+        sql.SET("tipo = #{row.tipo,jdbcType=VARCHAR}");
         
-        UsuarioExample example = (UsuarioExample) parameter.get("example");
+        TipoPracticaExample example = (TipoPracticaExample) parameter.get("example");
         applyWhere(sql, example, true);
         return sql.toString();
     }
 
-    public String updateByPrimaryKeySelective(Usuario row) {
+    public String updateByPrimaryKeySelective(TipoPractica row) {
         SQL sql = new SQL();
-        sql.UPDATE("usuario");
+        sql.UPDATE("tipo_practica");
         
-        if (row.getNombreUsuario() != null) {
-            sql.SET("nombre_usuario = #{nombreUsuario,jdbcType=VARCHAR}");
+        if (row.getTipo() != null) {
+            sql.SET("tipo = #{tipo,jdbcType=VARCHAR}");
         }
         
-        if (row.getNombre() != null) {
-            sql.SET("nombre = #{nombre,jdbcType=VARCHAR}");
-        }
+        sql.WHERE("id_tipo_practica = #{idTipoPractica,jdbcType=INTEGER}");
         
-        if (row.getApellido() != null) {
-            sql.SET("apellido = #{apellido,jdbcType=VARCHAR}");
-        }
-        
-        if (row.getFechaRegistro() != null) {
-            sql.SET("fecha_registro = #{fechaRegistro,jdbcType=DATE}");
-        }
-        
-        if (row.getContrasenha() != null) {
-            sql.SET("contrasenha = #{contrasenha,jdbcType=VARCHAR}");
-        }
-        
-        sql.WHERE("id_usuario = #{idUsuario,jdbcType=INTEGER}");
-        
-        return sql.toString();
-    }
-    
-    public String getUserByUsername(String username) {
-        SQL sql = new SQL();
-        sql.SELECT("*")
-           .FROM("usuario")
-           .WHERE("nombre_usuario = #{username}");
         return sql.toString();
     }
 
-    protected void applyWhere(SQL sql, UsuarioExample example, boolean includeExamplePhrase) {
+    protected void applyWhere(SQL sql, TipoPracticaExample example, boolean includeExamplePhrase) {
         if (example == null) {
             return;
         }

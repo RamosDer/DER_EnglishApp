@@ -7,6 +7,8 @@ import com.my_company.eapp.model.ResumenExample;
 import com.my_company.eapp.services.ResumenService;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class ResumenServiceImpl implements ResumenService {
 
     @Autowired
     private ResumenMapper resumenMapper;
+    
+    private static final Logger logger = LogManager.getLogger(ResumenServiceImpl.class);
 
     @Override
     public long countByExample(ResumenExample example) {
@@ -31,6 +35,11 @@ public class ResumenServiceImpl implements ResumenService {
     public int deleteByPrimaryKey(Integer idResumen) {
         return resumenMapper.deleteByPrimaryKey(idResumen);
     }
+    
+    @Override
+    public ResumenDto selectLastRecordByUser(Integer idUsuario) {
+        return convertToDto(resumenMapper.selectLastRecordByUser(idUsuario));
+    }
 
     @Override
     public int insert(ResumenDto resumenDto) {
@@ -41,6 +50,7 @@ public class ResumenServiceImpl implements ResumenService {
     @Override
     public int insertSelective(ResumenDto resumenDto) {
         Resumen resumen = convertToEntity(resumenDto);
+        logger.info("Ingresa a insertSelective: " + resumen.toString());
         return resumenMapper.insertSelective(resumen);
     }
 
@@ -73,6 +83,11 @@ public class ResumenServiceImpl implements ResumenService {
         Resumen resumen = convertToEntity(resumenDto);
         return resumenMapper.updateByPrimaryKeySelective(resumen);
     }
+    
+    @Override
+    public ResumenDto getByParameters(ResumenExample example) {
+        return convertToDto(resumenMapper.getByParameters(example));
+    }
 
     @Override
     public int updateByPrimaryKey(ResumenDto resumenDto) {
@@ -91,6 +106,7 @@ public class ResumenServiceImpl implements ResumenService {
         resumenDto.setFechaDePractica(resumen.getFechaDePractica());
         resumenDto.setAciertos(resumen.getAciertos());
         resumenDto.setPalabrasPracticadas(resumen.getPalabrasPracticadas());
+        resumenDto.setIdUsuario(resumen.getIdUsuario());
         return resumenDto;
     }
 
@@ -105,6 +121,9 @@ public class ResumenServiceImpl implements ResumenService {
         resumen.setFechaDePractica(resumenDto.getFechaDePractica());
         resumen.setAciertos(resumenDto.getAciertos());
         resumen.setPalabrasPracticadas(resumenDto.getPalabrasPracticadas());
+        resumen.setIdUsuario(resumenDto.getIdUsuario());
         return resumen;
     }
+
+    
 }

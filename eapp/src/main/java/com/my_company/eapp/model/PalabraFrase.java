@@ -15,6 +15,8 @@ public class PalabraFrase {
 
     private String codTipo;
 
+    private Integer idUsuario;
+
     public Integer getIdPalabraFrase() {
         return idPalabraFrase;
     }
@@ -61,5 +63,13 @@ public class PalabraFrase {
 
     public void setCodTipo(String codTipo) {
         this.codTipo = codTipo == null ? null : codTipo.trim();
+    }
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 }

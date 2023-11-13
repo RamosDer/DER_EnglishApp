@@ -35,10 +35,10 @@ public interface PalabraFraseMapper {
     @Insert({
         "insert into palabra_frase (contenido, dificultad, ",
         "aprendido, fecha_registro, ",
-        "cod_tipo)",
+        "cod_tipo, id_usuario)",
         "values (#{contenido,jdbcType=VARCHAR}, #{dificultad,jdbcType=VARCHAR}, ",
         "#{aprendido,jdbcType=BIT}, #{fechaRegistro,jdbcType=DATE}, ",
-        "#{codTipo,jdbcType=VARCHAR})"
+        "#{codTipo,jdbcType=VARCHAR}, #{idUsuario,jdbcType=INTEGER})"
     })
     @Options(useGeneratedKeys=true,keyProperty="idPalabraFrase")
     int insert(PalabraFrase row);
@@ -54,13 +54,15 @@ public interface PalabraFraseMapper {
         @Result(column="dificultad", property="dificultad", jdbcType=JdbcType.VARCHAR),
         @Result(column="aprendido", property="aprendido", jdbcType=JdbcType.BIT),
         @Result(column="fecha_registro", property="fechaRegistro", jdbcType=JdbcType.DATE),
-        @Result(column="cod_tipo", property="codTipo", jdbcType=JdbcType.VARCHAR)
+        @Result(column="cod_tipo", property="codTipo", jdbcType=JdbcType.VARCHAR),
+        @Result(column="id_usuario", property="idUsuario", jdbcType=JdbcType.INTEGER)
     })
     List<PalabraFrase> selectByExample(PalabraFraseExample example, Integer idCategoria);
 
     @Select({
         "select",
-        "id_palabra_frase, contenido, dificultad, aprendido, fecha_registro, cod_tipo",
+        "id_palabra_frase, contenido, dificultad, aprendido, fecha_registro, cod_tipo, ",
+        "id_usuario",
         "from palabra_frase",
         "where id_palabra_frase = #{idPalabraFrase,jdbcType=INTEGER}"
     })
@@ -70,7 +72,8 @@ public interface PalabraFraseMapper {
         @Result(column="dificultad", property="dificultad", jdbcType=JdbcType.VARCHAR),
         @Result(column="aprendido", property="aprendido", jdbcType=JdbcType.BIT),
         @Result(column="fecha_registro", property="fechaRegistro", jdbcType=JdbcType.DATE),
-        @Result(column="cod_tipo", property="codTipo", jdbcType=JdbcType.VARCHAR)
+        @Result(column="cod_tipo", property="codTipo", jdbcType=JdbcType.VARCHAR),
+        @Result(column="id_usuario", property="idUsuario", jdbcType=JdbcType.INTEGER)
     })
     PalabraFrase selectByPrimaryKey(Integer idPalabraFrase);
 
@@ -89,11 +92,11 @@ public interface PalabraFraseMapper {
           "dificultad = #{dificultad,jdbcType=VARCHAR},",
           "aprendido = #{aprendido,jdbcType=BIT},",
           "fecha_registro = #{fechaRegistro,jdbcType=DATE},",
-          "cod_tipo = #{codTipo,jdbcType=VARCHAR}",
+          "cod_tipo = #{codTipo,jdbcType=VARCHAR},",
+          "id_usuario = #{idUsuario,jdbcType=INTEGER}",
         "where id_palabra_frase = #{idPalabraFrase,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(PalabraFrase row);
-    
     
     @SelectProvider(type = PalabraFraseSqlProvider.class, method = "getPalabraFraseIdByContenido")
     int getPalabraFraseIdByContenido(String contenido);
