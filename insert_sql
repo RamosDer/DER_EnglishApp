@@ -259,3 +259,8 @@ INSERT INTO oracion (id_palabra_frase,texto) VALUES (42,'The writer embarked on 
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (43,'A gentle zephyr rustled the leaves, bringing a refreshing breeze to the hot afternoon.');
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (43,'The sailboat glided smoothly on the lake, propelled by a gentle zephyr.');
 
+
+/*TIPO DE PRACTICA*/
+INSERT INTO tipo_practica(tipo) VALUES ('SELECT');
+INSERT INTO tipo_practica(tipo) VALUES ('INPUT');
+
