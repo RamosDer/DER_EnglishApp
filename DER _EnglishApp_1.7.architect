@@ -5,7 +5,7 @@
  <project-data-sources>
   <data-source id="DS0">
    <property key="Connection Type" value="PostgreSQL" />
-   <property key="Logical" value="PlayPen Database" />
+   <property key="Logical" value="(Target Database)" />
    <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/english_app" />
    <property key="UID" value="postgres" />
    <property key="PWD" value="1234" />
@@ -228,10 +228,7 @@
     <column id="COL58" populated="true" UUID="aeaa58e7-1676-479f-ab55-b15ae8db1803" autoIncrement="false" autoIncrementSequenceName="resumen_palabras_practicadas_seq" defaultValue="" name="palabras_practicadas" nullable="0" physicalName="palabras_practicadas" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL59" populated="true" UUID="91e25510-e82d-47c3-9ef4-9b2e3ec407e0" autoIncrement="false" autoIncrementSequenceName="resumen_id_resumen_detalle_seq" defaultValue="" name="id_resumen_detalle" nullable="0" physicalName="id_resumen_detalle" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
-     <remarks></remarks>
-    </column>
-    <column id="COL60" populated="true" UUID="c3a3ace8-a367-482c-80bd-19e9caa58fa3" autoIncrement="false" autoIncrementSequenceName="resumen_id_usuario_seq" defaultValue="" name="id_usuario" nullable="0" physicalName="id_usuario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL59" populated="true" UUID="c3a3ace8-a367-482c-80bd-19e9caa58fa3" autoIncrement="false" autoIncrementSequenceName="resumen_id_usuario_seq" defaultValue="" name="id_usuario" nullable="0" physicalName="id_usuario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -240,31 +237,34 @@
     <folder id="FOLTAB532" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB534" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX61" populated="true" UUID="4f596c2d-0c5c-48f9-b288-a606c37e3ba1" clustered="false" name="resumen_pk" physicalName="resumen_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC62" populated="true" UUID="05ce002b-a1e2-463a-9ba0-ca0876848ba2" ascendingOrDescending="UNSPECIFIED" column-ref="COL54" name="id_resumen" physicalName="id_resumen" />
+    <index id="IDX60" populated="true" UUID="4f596c2d-0c5c-48f9-b288-a606c37e3ba1" clustered="false" name="resumen_pk" physicalName="resumen_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC61" populated="true" UUID="05ce002b-a1e2-463a-9ba0-ca0876848ba2" ascendingOrDescending="UNSPECIFIED" column-ref="COL54" name="id_resumen" physicalName="id_resumen" />
     </index>
    </folder>
   </table>
-  <table id="TAB63" populated="true" UUID="f389c14d-1cce-469b-9e74-c555569a5d21" name="resumen_detalle" objectType="TABLE" physicalName="resumen_detalle" >
+  <table id="TAB62" populated="true" UUID="f389c14d-1cce-469b-9e74-c555569a5d21" name="resumen_detalle" objectType="TABLE" physicalName="resumen_detalle" >
    <remarks></remarks>
-   <folder id="FOLTAB631" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL64" populated="true" UUID="32670a08-7295-4879-9ddb-094e6d08dee3" autoIncrement="true" autoIncrementSequenceName="resumen_detalle_id_resumen_detalle_seq" defaultValue="" name="id_resumen_detalle" nullable="0" physicalName="id_resumen_detalle" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
+   <folder id="FOLTAB621" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL63" populated="true" UUID="32670a08-7295-4879-9ddb-094e6d08dee3" autoIncrement="true" autoIncrementSequenceName="resumen_detalle_id_resumen_detalle_seq" defaultValue="" name="id_resumen_detalle" nullable="0" physicalName="id_resumen_detalle" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL65" populated="true" UUID="f4591290-1687-4098-a2e3-1e8ec4b94d1a" autoIncrement="false" autoIncrementSequenceName="resumen_detalle_id_palabra_frase_seq" defaultValue="" name="id_palabra_frase" nullable="0" physicalName="id_palabra_frase" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL64" populated="true" UUID="f4591290-1687-4098-a2e3-1e8ec4b94d1a" autoIncrement="false" autoIncrementSequenceName="resumen_detalle_id_palabra_frase_seq" defaultValue="" name="id_palabra_frase" nullable="0" physicalName="id_palabra_frase" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL66" populated="true" UUID="892ba3bd-a20a-48a8-8210-6de738f37be6" autoIncrement="false" autoIncrementSequenceName="resumen_detalle_correcto_seq" defaultValue="" name="correcto" nullable="0" physicalName="correcto" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
+    <column id="COL65" populated="true" UUID="892ba3bd-a20a-48a8-8210-6de738f37be6" autoIncrement="false" autoIncrementSequenceName="resumen_detalle_correcto_seq" defaultValue="" name="correcto" nullable="0" physicalName="correcto" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
+     <remarks></remarks>
+    </column>
+    <column id="COL66" populated="true" UUID="e59c7953-4a29-4038-9a77-6057756390ae" autoIncrement="false" autoIncrementSequenceName="resumen_id_resumen_seq" defaultValue="" name="id_resumen" nullable="0" physicalName="id_resumen" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
-    <folder id="FOLTAB633" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    <folder id="FOLTAB623" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
     </folder>
-    <folder id="FOLTAB632" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    <folder id="FOLTAB622" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
-    <folder id="FOLTAB634" populated="true" name="Indices" physicalName="Indices" type="4">
+    <folder id="FOLTAB624" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX67" populated="true" UUID="9a86d716-7a99-44b5-b3fd-e78edbece28c" clustered="false" name="resumen_detalle_pk" physicalName="resumen_detalle_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC68" populated="true" UUID="5534891d-eb2d-4c9b-ac25-7627384fc039" ascendingOrDescending="UNSPECIFIED" column-ref="COL64" name="id_resumen_detalle" physicalName="id_resumen_detalle" />
+     <index-column id="IDC68" populated="true" UUID="5534891d-eb2d-4c9b-ac25-7627384fc039" ascendingOrDescending="UNSPECIFIED" column-ref="COL63" name="id_resumen_detalle" physicalName="id_resumen_detalle" />
     </index>
    </folder>
   </table>
@@ -273,7 +273,7 @@
     <column-mapping id="CMP70" populated="true" UUID="418ed7fc-b5aa-44f0-8193-0e94fbbeb9cd" fk-column-ref="COL50" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL23" />
    </relationship>
    <relationship id="REL71" populated="true" UUID="73e893cf-4055-4a2a-a31f-069ad5cddf88" deferrability="7" deleteRule="3" fk-table-ref="TAB53" fkCardinality="7" identifying="false" name="usuario_resumen_fk" physicalName="usuario_resumen_fk" pk-table-ref="TAB22" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP72" populated="true" UUID="1fe9780a-f63c-45f5-9167-2233dc7b067c" fk-column-ref="COL60" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL23" />
+    <column-mapping id="CMP72" populated="true" UUID="1fe9780a-f63c-45f5-9167-2233dc7b067c" fk-column-ref="COL59" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL23" />
    </relationship>
    <relationship id="REL73" populated="true" UUID="671e5f5f-480d-4b60-8dcf-2a952941acea" deferrability="7" deleteRule="3" fk-table-ref="TAB43" fkCardinality="7" identifying="false" name="tipo_palabra_frase_fk" physicalName="tipo_palabra_frase_fk" pk-table-ref="TAB31" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP74" populated="true" UUID="4dec13b8-03c8-4035-8627-7d7f750797f6" fk-column-ref="COL49" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL32" />
@@ -290,15 +290,15 @@
    <relationship id="REL81" populated="true" UUID="2785735b-0181-419c-9b6b-91edadaaeddf" deferrability="7" deleteRule="3" fk-table-ref="TAB8" fkCardinality="7" identifying="false" name="palabra_frase_oracion_fk" physicalName="palabra_frase_oracion_fk" pk-table-ref="TAB43" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP82" populated="true" UUID="dc14f042-2368-4041-b1c1-0ac22ce6cc2c" fk-column-ref="COL12" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL44" />
    </relationship>
-   <relationship id="REL83" populated="true" UUID="b2e3dfd3-5731-46c2-ae58-f19b1173b6b2" deferrability="7" deleteRule="3" fk-table-ref="TAB63" fkCardinality="7" identifying="false" name="palabra_frase_resumen_detalle_fk" physicalName="palabra_frase_resumen_detalle_fk" pk-table-ref="TAB43" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP84" populated="true" UUID="ff7fab9a-0cfa-4a9f-83eb-cf9fcc4386ff" fk-column-ref="COL65" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL44" />
+   <relationship id="REL83" populated="true" UUID="b2e3dfd3-5731-46c2-ae58-f19b1173b6b2" deferrability="7" deleteRule="3" fk-table-ref="TAB62" fkCardinality="7" identifying="false" name="palabra_frase_resumen_detalle_fk" physicalName="palabra_frase_resumen_detalle_fk" pk-table-ref="TAB43" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP84" populated="true" UUID="ff7fab9a-0cfa-4a9f-83eb-cf9fcc4386ff" fk-column-ref="COL64" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL44" />
    </relationship>
-   <relationship id="REL85" populated="true" UUID="7e7ccdbc-cfe8-4090-8df8-d68300001f58" deferrability="7" deleteRule="3" fk-table-ref="TAB53" fkCardinality="7" identifying="false" name="resumen_detalle_resumen_fk" physicalName="resumen_detalle_resumen_fk" pk-table-ref="TAB63" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP86" populated="true" UUID="befea5dd-9070-4350-b087-77b9fcf73d9b" fk-column-ref="COL59" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL64" />
+   <relationship id="REL85" populated="true" UUID="f24aebca-54cf-46eb-a27d-99541cc17c6d" deferrability="7" deleteRule="3" fk-table-ref="TAB62" fkCardinality="7" identifying="false" name="resumen_resumen_detalle_fk" physicalName="resumen_resumen_detalle_fk" pk-table-ref="TAB53" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP86" populated="true" UUID="9042f009-4157-42e5-a19c-43065c324553" fk-column-ref="COL66" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL54" />
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="1.1892071150027206" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
@@ -310,7 +310,7 @@
   <table-pane table-ref="TAB38" x="132" y="40" bgColor="0xfbdabb" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB43" x="410" y="341" bgColor="0xfbdabb" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB53" x="1109" y="244" bgColor="0xfbdabb" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB63" x="726" y="238" bgColor="0xfbdabb" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB62" x="727" y="237" bgColor="0xfbdabb" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-link relationship-ref="REL73" pkConnection="0.5643153526970954" fkConnection="0.0830188679245283" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
   <table-link relationship-ref="REL77" pkConnection="0.7849056603773585" fkConnection="0.5405405405405406" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="40"/>
   <table-link relationship-ref="REL79" pkConnection="0.34177215189873417" fkConnection="0.6455696202531646" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
@@ -318,8 +318,8 @@
   <table-link relationship-ref="REL75" pkConnection="0.47717842323651455" fkConnection="0.5186721991701245" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
   <table-link relationship-ref="REL69" pkConnection="0.717741935483871" fkConnection="0.2641509433962264" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
   <table-link relationship-ref="REL83" pkConnection="0.16083916083916083" fkConnection="0.6582278481012658" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL85" pkConnection="0.746031746031746" fkConnection="0.3700787401574803" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
   <table-link relationship-ref="REL71" pkConnection="1.0" fkConnection="0.5147058823529411" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="65"/>
+  <table-link relationship-ref="REL85" pkConnection="0.4409448818897638" fkConnection="0.5789473684210527" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">

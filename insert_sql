@@ -1,3 +1,6 @@
+/*USUARIO*/
+INSERT INTO public.usuario(nombre_usuario, nombre, apellido, fecha_registro, contrasenha) VALUES ('admin_', 'admin', 'admin', now(), '$2a$10$CBamcQY2jSGZOfJxNnsA2Oxmc4qx.lpdSUhJt6JdWZsiyiuIrAD1W');
+
 /*CATEGORIA*/
 INSERT INTO categoria(descripcion) VALUES ('WORD');
 INSERT INTO categoria(descripcion) VALUES ('PHRASE');
@@ -11,49 +14,49 @@ INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPADV',1,'ADVERB')
 INSERT INTO tipo(cod_tipo,id_categoria,descripcion) VALUES ('TIPGRT',2,'GREETINGS');
 
 /*PALABRA FRASE*/
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','cat','Easy');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','dog','Easy');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','house','Easy');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','tree','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','book','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPGRT','Hello, how are you?','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPGRT','Good morning!','Easy');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPGRT','Good Evening!','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','old','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','young','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','gorgeus','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADV','Some','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADV','Many','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADV','Much','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','you','Easy');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','she','Easy');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','he','Easy');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Walk','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Play','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Break','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Eat','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Kick','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Hug','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','Sky','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Illuminate','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Mysterious','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','Serenade','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','Wanderlust','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Blissful','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Resilient','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Enchant','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Luminous','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Tranquil','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Whimsical','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','Cascade','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Ethereal','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Jubilant','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','Serendipity','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPVERB','Traverse','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Velvety','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','Harmony','Medium');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPADJ','Quixotic','Hard');
-INSERT INTO palabra_frase (cod_tipo,contenido,dificultad) VALUES ('TIPNOUN','Zephyr','Hard');
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','cat','Easy',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','dog','Easy',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','house','Easy',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','tree','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','book','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPGRT','Hello, how are you?','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPGRT','Good morning!','Easy',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPGRT','Good Evening!','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','old','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','young','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','gorgeus','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADV','Some','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADV','Many','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADV','Much','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','you','Easy',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','she','Easy',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','he','Easy',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Walk','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Play','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Break','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Eat','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Kick','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Hug','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','Sky','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Illuminate','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Mysterious','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','Serenade','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','Wanderlust','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Blissful','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Resilient','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Enchant','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Luminous','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Tranquil','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Whimsical','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','Cascade','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Ethereal','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Jubilant','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','Serendipity','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPVERB','Traverse','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Velvety','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','Harmony','Medium',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPADJ','Quixotic','Hard',1);
+INSERT INTO palabra_frase (cod_tipo,contenido,dificultad,id_usuario) VALUES ('TIPNOUN','Zephyr','Hard',1);
 
 /*SIGNIFICADO*/
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (1,'A carnivorous mammal of the family Felidae, usually domesticated as a pet');
@@ -167,6 +170,8 @@ INSERT INTO significado (id_palabra_frase,descripcion) VALUES (42,'Inspired by t
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (43,'A gentle, mild breeze.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (43,'Any light, gentle wind.');
 INSERT INTO significado (id_palabra_frase,descripcion) VALUES (43,'Poetically used to refer to the west wind or any soft, mild breeze.');
+
+
 /*ORACION*/
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (1,'I have a black cat named Whiskers');
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (2,'My dog loves to play fetch in the park');
@@ -253,3 +258,4 @@ INSERT INTO oracion (id_palabra_frase,texto) VALUES (42,'His quixotic dreams of 
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (42,'The writer embarked on a quixotic quest to create a novel in just one day.');
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (43,'A gentle zephyr rustled the leaves, bringing a refreshing breeze to the hot afternoon.');
 INSERT INTO oracion (id_palabra_frase,texto) VALUES (43,'The sailboat glided smoothly on the lake, propelled by a gentle zephyr.');
+
